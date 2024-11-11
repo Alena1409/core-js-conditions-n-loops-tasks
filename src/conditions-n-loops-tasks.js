@@ -124,8 +124,59 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '.':
+        result += 'point ';
+        break;
+      case ',':
+        result += 'point ';
+        break;
+      case '1':
+        result += 'one ';
+        break;
+      case '2':
+        result += 'two ';
+        break;
+      case '3':
+        result += 'three ';
+        break;
+      case '4':
+        result += 'four ';
+        break;
+      case '5':
+        result += 'five ';
+        break;
+      case '6':
+        result += 'six ';
+        break;
+      case '7':
+        result += 'seven ';
+        break;
+      case '8':
+        result += 'eight ';
+        break;
+      case '9':
+        result += 'nine ';
+        break;
+      case '0':
+        result += 'zero ';
+        break;
+      case '-':
+        result += 'minus ';
+        break;
+      default:
+        result += ' ';
+        break;
+    }
+  }
+  let str = '';
+  for (let j = 0; j < result.length - 1; j += 1) {
+    str += result[j];
+  }
+  return str;
 }
 
 /**
@@ -140,8 +191,12 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let a = '';
+  for (let i = 0; i < str.length; i += 1) {
+    a = str[i] + a;
+  }
+  return str === a;
 }
 
 /**
@@ -158,8 +213,11 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) return i;
+  }
+  return -1;
 }
 
 /**
@@ -177,8 +235,15 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let a;
+  let number = num;
+  while (number) {
+    a = number % 10;
+    if (a === digit) return true;
+    number = Math.floor(number / 10);
+  }
+  return false;
 }
 
 /**
@@ -256,8 +321,24 @@ function rotateMatrix(/* matrix */) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  const result = arr;
+  let sort;
+
+  do {
+    sort = false;
+    for (let i = 0; i < result.length - 1; i += 1) {
+      const a = result[i];
+      const b = result[i + 1];
+
+      if (result[i] > result[i + 1]) {
+        result[i + 1] = a;
+        result[i] = b;
+        sort = true;
+      }
+    }
+  } while (sort);
+  return result;
 }
 
 /**
@@ -277,8 +358,21 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let result = str;
+  for (let i = 0; i < iterations; i += 1) {
+    let str1 = '';
+    let str2 = '';
+    for (let j = 0; j < result.length; j += 1) {
+      if (j % 2 === 0) {
+        str1 += result[j];
+      } else {
+        str2 += result[j];
+      }
+    }
+    result = str1 + str2;
+  }
+  return result;
 }
 
 /**
